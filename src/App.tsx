@@ -9,29 +9,31 @@ import './styles/App.css'
 function App() {
   let data: TodoList = [
     {
+      id: 1,
       task: 'Buy Milk',
-      completed: true,
+      completed: false,
     },
     {
+      id: 2,
       task: 'Drink Milk',
       completed: false,
     },
     {
+      id: 3,
       task: 'Buy More Milk',
       completed: false,
     },
-    { task: 'Give milk to mouse', completed: false },
+    { id: 4, 
+      task: 'Give milk to mouse', 
+      completed: false },
   ]
   const [currentTodos, setCurrentTodos] = useState(data)
 
-  const handleDeleteTodo = (indexToDelete: number): void => {
-    setCurrentTodos(currentTodos.filter((todo, index) => index !== indexToDelete))
-  }
-
-  const handleEditTodo = (indexToEdit: number, newTask: string): void => {
-    const newTodos = [...currentTodos]
-    newTodos[indexToEdit].task = newTask
-    setCurrentTodos(newTodos)
+  const handleDeleteTodo = (idToDelete: number): void => {
+    console.log(idToDelete)
+    const filteredTodos = currentTodos.filter((todo) => todo.id !== idToDelete)
+    console.log(filteredTodos)
+    setCurrentTodos(filteredTodos)
   }
 
   return (
@@ -41,7 +43,7 @@ function App() {
         <TodoInput />
         <div className="App_todos-container">
           {currentTodos.map((todo, index) => (
-            <SingleTodo todo={todo} index={index} key={index} deleteTodo={handleDeleteTodo} editTodo={handleEditTodo} />
+            <SingleTodo todo={todo} key={index} deleteTodo={handleDeleteTodo} />
           ))}
         </div>
       </div>

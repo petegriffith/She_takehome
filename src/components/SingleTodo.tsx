@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 import '../styles/SingleTodo.css'
 import '../styles/_flex.css'
 
-function SingleTodo({ todo, index, deleteTodo, editTodo }: { todo: Todo; index: number; deleteTodo: (index: number) => void; editTodo: (index: number, edittedTask: string) => void }) {
+function SingleTodo({ todo, deleteTodo }: { todo: Todo; deleteTodo: (id: number) => void}) {
   const [todoTask, setTodoTask] = useState(todo.task)
   const [isEditting, toggleIsEditting] = useState(false)
 
-  const handleDeleteTodoClick = () => deleteTodo(index)
+  const handleDeleteTodoClick = () => deleteTodo(todo.id)
   
   const handleEditTodoClick = () => {
     if (isEditting === true) toggleIsEditting(false)
