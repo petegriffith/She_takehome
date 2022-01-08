@@ -1,0 +1,11 @@
+.TodoInput_container {
+    display: flex;
+}
+
+.TodoInput_input {
+    height: 2em;
+}
+
+.TodoInput_button {
+    background-color: darkslategray;
+}
