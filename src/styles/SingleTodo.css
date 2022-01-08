@@ -1,0 +1,25 @@
+.todo-container {
+    border: 1px solid grey;
+    justify-content: space-between;
+}
+
+.button-container {
+    margin-right: 1em;
+    gap: 1em
+}
+
+.button {
+    border: 1px grey solid;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0.5em 0.25em;
+    color: white
+}
+
+.edit-button {
+    background-color:  #28a745
+}
+
+.delete-button {
+    background-color: #dc3545
+}
