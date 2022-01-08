@@ -1,6 +1,7 @@
 .todo-container {
     border: 1px solid grey;
     justify-content: space-between;
+    min-height: 9vh;
 }
 
 .strikethrough {
