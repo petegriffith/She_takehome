@@ -30,10 +30,18 @@ function App() {
   const [currentTodos, setCurrentTodos] = useState(data)
 
   const handleDeleteTodo = (idToDelete: number): void => {
-    console.log(idToDelete)
-    const filteredTodos = currentTodos.filter((todo) => todo.id !== idToDelete)
-    console.log(filteredTodos)
+    const filteredTodos: TodoList = currentTodos.filter((todo) => todo.id !== idToDelete)
     setCurrentTodos(filteredTodos)
+  }
+
+  const handleEditTodo = (idToEdit: number, newTask: string): void => {
+    const newTodos: TodoList = currentTodos.map((todo) => {
+      if (todo.id === idToEdit) {
+        todo.task = newTask
+      }
+      return todo
+    })
+    setCurrentTodos(newTodos)
   }
 
   return (
@@ -43,7 +51,7 @@ function App() {
         <TodoInput />
         <div className="App_todos-container">
           {currentTodos.map((todo, index) => (
-            <SingleTodo todo={todo} key={index} deleteTodo={handleDeleteTodo} />
+            <SingleTodo todo={todo} key={index} deleteTodo={handleDeleteTodo} editTodo={handleEditTodo} />
           ))}
         </div>
       </div>

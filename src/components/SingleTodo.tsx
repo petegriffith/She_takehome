@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import '../styles/SingleTodo.css'
 import '../styles/_flex.css'
 
-function SingleTodo({ todo, deleteTodo }: { todo: Todo; deleteTodo: (id: number) => void}) {
+function SingleTodo({ todo, deleteTodo, editTodo }: { todo: Todo; deleteTodo: (id: number) => void; editTodo: (id: number, edittedTask: string) => void}) {
   const [todoTask, setTodoTask] = useState(todo.task)
   const [isEditting, toggleIsEditting] = useState(false)
 
@@ -17,11 +17,12 @@ function SingleTodo({ todo, deleteTodo }: { todo: Todo; deleteTodo: (id: number)
   const handleEnterClick = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
       toggleIsEditting(false)
+      editTodo(todo.id, todoTask)
     }
   }
 
   const taskInput = <input type="text" value={todoTask} onChange={(event) => setTodoTask(event.target.value)} onKeyDown={handleEnterClick} />
-  const taskName = <p className={todo.completed ? 'strikethrough' : ''}>{todoTask}</p>
+  const taskName = <p className={todo.completed ? 'strikethrough' : ''}>{todo.task}</p>
 
   return (
     <div className="_flex-row todo-container">
