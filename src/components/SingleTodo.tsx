@@ -3,21 +3,18 @@ import React from 'react'
 import '../styles/SingleTodo.css'
 import '../styles/_flex.css'
 
-interface Todo {
-  task: string
-  completed: boolean
-}
 
-function SingleTodo({ todo }: { todo: Todo }) {
+
+function SingleTodo({ todo, index, deleteTodo }: { todo: Todo, index: number, deleteTodo: (index: number) => void }) {
   return (
     <div className="_flex-row todo-container">
       <div className="_flex-row">
         <input type="checkbox" />
-        <p>{todo.task}</p>
+        <p className={todo.completed ? 'strikethrough' : ''}>{todo.task}</p>
       </div>
       <div className="_flex-row button-container">
-        <div className="button delete-button">Delete</div>
-        <div className="button edit-button">Edit</div>
+        <div role="button" onClick={() => console.log('editting')} className="button edit-button">Edit</div>
+        <div role="button" onClick={() => deleteTodo(index)} className="button delete-button">Delete</div>
       </div>
     </div>
   )
