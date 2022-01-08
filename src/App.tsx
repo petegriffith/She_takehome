@@ -28,6 +28,12 @@ function App() {
     setCurrentTodos(currentTodos.filter((todo, index) => index !== indexToDelete))
   }
 
+  const handleEditTodo = (indexToEdit: number, newTask: string): void => {
+    const newTodos = [...currentTodos]
+    newTodos[indexToEdit].task = newTask
+    setCurrentTodos(newTodos)
+  }
+
   return (
     <>
       <Header />
@@ -35,7 +41,7 @@ function App() {
         <TodoInput />
         <div className="App_todos-container">
           {currentTodos.map((todo, index) => (
-            <SingleTodo todo={todo} index={index} key={index} deleteTodo={handleDeleteTodo} />
+            <SingleTodo todo={todo} index={index} key={index} deleteTodo={handleDeleteTodo} editTodo={handleEditTodo} />
           ))}
         </div>
       </div>
